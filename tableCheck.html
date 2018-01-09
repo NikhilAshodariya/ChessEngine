@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Chess Board</title>
+
+  <style media="screen">
+    table {
+      background-color: lavenderblush;
+      border: solid;
+      border-width: 0.1em;
+    }
+
+    td {
+      width: 1em;
+      background-color: rosybrown;
+      height: 1.3em;
+    }
+
+    th {
+      width: 4em;
+      height: 2em;
+    }
+
+    td.leftNumber,
+    td.rightNumber,
+    th.leftNumber,
+    th.rightNumber {
+      width: 1.3em;
+    }
+
+    td.leftNumber,
+    td.rightNumber {
+      background-color: inherit;
+    }
+
+    td.leftNumber {
+      text-align: right;
+    }
+
+    td.rightNumber {
+      text-align: left;
+    }
+
+    .ChessPieces {
+      text-align: center;
+      font-size: 3em;
+    }
+
+    td.controlPanelBody,
+    table.controlPanelBody {
+      background-color: white;
+    }
+
+    .pieceMoveButton {
+      background-color: darkseagreen;
+      width: 100%;
+    }
+
+    td.moveButtonCell {
+      background-color: white;
+    }
+  </style>
+
+</head>
+
+<body id="body">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="controlPanel.js"></script>
+  <br>
+  <div class="controlPanel">
+    <table class="controlPanelBody">
+      <thead>
+        <th>Source</th>
+        <th>Destiantion</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="controlPanelBody"> <input type="text" id="sourceRow" name="sourceRow" value="" placeholder="Row 1"> </td>
+          <td class="controlPanelBody"> <input type="text" id="destinationRow" name="destinationRow" value="" placeholder="Row 2"> </td>
+        </tr>
+        <tr>
+          <td class="controlPanelBody"> <input type="text" id="sourceColumn" name="sourceColumn" value="" placeholder="Column 1"> </td>
+          <td class="controlPanelBody"> <input type="text" id="destinationColumn" name="destinationColumn" value="" placeholder="Column 2"> </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="moveButtonCell">
+            <!-- <input type="submit" id="" onclick="()" class="pieceMoveButton" name="" value="Move the Piece"> -->
+            <button type="button" id="pieceMoveSubmitButton" class="pieceMoveButton">Move the piece</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
