@@ -4,70 +4,19 @@
 <head>
   <meta charset="utf-8">
   <title>Chess Board</title>
-
-  <style media="screen">
-    table {
-      background-color: lavenderblush;
-      border: solid;
-      border-width: 0.1em;
-    }
-
-    td {
-      width: 1em;
-      background-color: rosybrown;
-      height: 1.3em;
-    }
-
-    th {
-      width: 4em;
-      height: 2em;
-    }
-
-    td.leftNumber,
-    td.rightNumber,
-    th.leftNumber,
-    th.rightNumber {
-      width: 1.3em;
-    }
-
-    td.leftNumber,
-    td.rightNumber {
-      background-color: inherit;
-    }
-
-    td.leftNumber {
-      text-align: right;
-    }
-
-    td.rightNumber {
-      text-align: left;
-    }
-
-    .ChessPieces {
-      text-align: center;
-      font-size: 3em;
-    }
-
-    td.controlPanelBody,
-    table.controlPanelBody {
-      background-color: white;
-    }
-
-    .pieceMoveButton {
-      background-color: darkseagreen;
-      width: 100%;
-    }
-
-    td.moveButtonCell {
-      background-color: white;
-    }
-  </style>
-
+  <link rel="stylesheet" href="../css/tableDesign.css">
 </head>
 
 <body id="body">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="controlPanel.js"></script>
+  <script type="text/javascript" src="../js/loadChessBoard.js"></script>
+  <script type="text/javascript" src="../js/PieceMove.js"></script>
+  <!-- <script type="text/javascript" src="controlPanel.js"></script> -->
+
+
+  <script type="text/javascript">
+    createInitialChessBoard();
+  </script>
   <br>
   <div class="controlPanel">
     <table class="controlPanelBody">
@@ -86,7 +35,6 @@
         </tr>
         <tr>
           <td colspan="2" class="moveButtonCell">
-            <!-- <input type="submit" id="" onclick="()" class="pieceMoveButton" name="" value="Move the Piece"> -->
             <button type="button" id="pieceMoveSubmitButton" class="pieceMoveButton">Move the piece</button>
           </td>
         </tr>

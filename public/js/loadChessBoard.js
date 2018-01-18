@@ -1,5 +1,3 @@
-console.log("in function");
-
 function createInitialChessBoard() {
   function nextHeader(c) {
     return String.fromCharCode(c.charCodeAt(0) + 1);
@@ -140,64 +138,4 @@ function createInitialChessBoard() {
   body.appendChild(table);
 
   populateInitialChessPieces();
-}
-
-createInitialChessBoard();
-
-$(document).ready(function() {
-  $('#sourceRow').change({
-    color: 'blue'
-  }, changeColorOfSourcePiece);
-
-  $('#sourceColumn').change({
-    color: 'blue'
-  }, changeColorOfSourcePiece);
-
-  $('#destinationColumn').change({
-    color: 'red'
-  }, changeColorOfDestinationPiece);
-
-  $('#destinationRow').change({
-    color: 'red'
-  }, changeColorOfDestinationPiece);
-
-  $('#pieceMoveSubmitButton').click(movePiece);
-
-});
-
-
-function movePiece() {
-  var sourceRow = $('#sourceRow');
-  var sourceColumn = $('#sourceColumn');
-  var data = `#${sourceRow.val()}${sourceColumn.val()}`;
-  var sourcePieceData = $(data).html();
-  $(data).html("").show("slow");
-
-  var destinationRow = $('#destinationRow');
-  var destinationColumn = $('#destinationColumn');
-  var data = `#${destinationRow.val()}${destinationColumn.val()}`;
-  $(data).html(sourcePieceData).show("slow");
-  makeDefaultColor(event);
-}
-
-function makeDefaultColor(eventObject) {
-  $(".ChessPieces").css("background-color", "rosybrown");
-}
-
-function changeColorOfSourcePiece(event) {
-  var sourceRow = $('#sourceRow');
-  var sourceColumn = $('#sourceColumn');
-  var data = `#${sourceRow.val()}${sourceColumn.val()}`;
-  // alert($(data).val());
-  $(data).css("background-color", event.data.color);
-
-  event.stopPropagation();
-}
-
-function changeColorOfDestinationPiece(event) {
-  var destinationRow = $('#destinationRow');
-  var destinationColumn = $('#destinationColumn');
-  var data = `#${destinationRow.val()}${destinationColumn.val()}`;
-  $(data).css("background-color", event.data.color);
-  event.stopPropagation();
 }
