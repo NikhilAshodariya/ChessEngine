@@ -1,4 +1,4 @@
-var Board = require("../model/Board.js");
+var Board = require("./Board.js");
 
 var chessBoard = new Board();
 // console.log(chessBoard.board);

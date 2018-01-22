@@ -69,6 +69,18 @@ class Board {
   getChessBoard() {
     return this.board;
   }
+
+  getTile(data){
+    return this.board[data];
+  }
+
+  getPiece(data){
+    return this.board[data].getPiece();
+  }
+
+  setPiece(location, piece){
+    this.board[location].setPiece(piece);
+  }
 }
 
 module.exports = Board;

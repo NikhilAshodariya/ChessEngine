@@ -1,6 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var moveController = require("./server/controller/moveController.js");
+var ChessBoard = require("./server/model/ChessBoard.js");
 // var createChessBoardController = require("./server/controller/ChessBoard.js");
 
 var app = express();
@@ -18,6 +19,13 @@ app.use(bodyParser.urlencoded({
 chessBoardRouter = express.Router();
 chessBoardRouter.get("/", function(request, response) {
   response.sendFile(__dirname + "/public/html/table.html");
+});
+
+chessBoardRouter.get("/getChessBoard", function(request, response) {
+  response.setHeader("Content-Type", "application/JSON");
+  response.send(JSON.stringify({
+    chessBoard: ChessBoard.board
+  }));
 });
 
 chessBoardRouter.get("/move/:from/:to", function(request, response) {

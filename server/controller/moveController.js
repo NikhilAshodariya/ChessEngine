@@ -1,4 +1,5 @@
-var ChessBoard = require("./ChessBoard.js");
+// var ChessBoard = require("../model/ChessBoard.js");
+var ChessBoard = require("../model/ChessBoard.js");
 
 var obj = function() {
   return {
