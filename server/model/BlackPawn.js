@@ -1,10 +1,8 @@
 var Pawn = require("./Pawn.js");
-var Board;
 var ChessBoard;
 var KilledPieces;
 
 function loadResources() {
-  Board = require("./Board.js");
   ChessBoard = require("./ChessBoard.js");
   KilledPieces = require("./KilledPieces.js");
 }
@@ -21,6 +19,10 @@ class BlackPawn extends Pawn {
       if (this.isFirstMove == true) {
         if (ChessBoard.getPiece("" + (Number(from[0]) - 1) + from[1]) == undefined) {
           if (ChessBoard.getPiece(to) != undefined) {
+            if (ChessBoard.getPiece(from).getType() == ChessBoard.getPiece(to).getType()) {
+              console.log("same party elements can't be killed");
+              return "invalid";
+            }
             console.log("enemy Killed");
             console.log("Move successful");
             this.isFirstMove = false;
@@ -38,9 +40,11 @@ class BlackPawn extends Pawn {
           }
         } else {
           console.log("Invalid Move since someone in between");
+          return "invalid";
         }
       } else {
         console.log("invalid Move since only first move can take 2 steps");
+        return "invalid";
       }
     } else if (((Number(from[0]) - 1) == to[0]) && (from[1]) == to[1]) {
       if (ChessBoard.getPiece(to) != undefined) {
@@ -61,6 +65,7 @@ class BlackPawn extends Pawn {
       }
     } else {
       console.log("Move Unsuccessful learn pawn move direction");
+      return "invalid";
     }
 
   }
