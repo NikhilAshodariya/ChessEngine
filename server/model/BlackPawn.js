@@ -17,11 +17,6 @@ class BlackPawn extends Pawn {
   move(from, to) {
     // return "valid";
     loadResources();
-    console.log("in Pawn from " + from[0]);
-    console.log("in Pawn from " + from[1]);
-    console.log("in Pawn to " + to[0]);
-    console.log("in Pawn to " + to[1]);
-    // console.log(ChessBoard instanceof Board);
     if (((Number(from[0]) - 2) == to[0]) && (from[1] == to[1])) {
       if (this.isFirstMove == true) {
         if (ChessBoard.getPiece("" + (Number(from[0]) - 1) + from[1]) == undefined) {

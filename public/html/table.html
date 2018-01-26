@@ -9,14 +9,140 @@
 
 <body id="body">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="../js/loadChessBoard.js"></script>
   <script type="text/javascript" src="../js/PieceMove.js"></script>
+  <script type="text/javascript" src="../js/loadChessBoard.js"></script>
   <!-- <script type="text/javascript" src="controlPanel.js"></script> -->
 
 
-  <script type="text/javascript">
-    createInitialChessBoard();
-  </script>
+  <div class="chessBoard">
+    <table id="chessTable">
+      <thead>
+        <!-- &nbsp; -->
+        <th class="leftNumber"> </th>
+        <th>a</th>
+        <th>b</th>
+        <th>c</th>
+        <th>d</th>
+        <th>e</th>
+        <th>f</th>
+        <th>g</th>
+        <th>h</th>
+        <th class="rightNumber"> </th>
+      </thead>
+      <tbody>
+        <tr id="row8">
+          <td class="leftNumber">8</td>
+          <td id="8a" class="ChessPieces"></td>
+          <td id="8b" class="ChessPieces"></td>
+          <td id="8c" class="ChessPieces"></td>
+          <td id="8d" class="ChessPieces"></td>
+          <td id="8e" class="ChessPieces"></td>
+          <td id="8f" class="ChessPieces"></td>
+          <td id="8g" class="ChessPieces"></td>
+          <td id="8h" class="ChessPieces"></td>
+          <td class="rightNumber">8</td>
+        </tr>
+        <tr id="row7">
+          <td class="leftNumber">7</td>
+          <td id="7a" class="ChessPieces"></td>
+          <td id="7b" class="ChessPieces"></td>
+          <td id="7c" class="ChessPieces"></td>
+          <td id="7d" class="ChessPieces"></td>
+          <td id="7e" class="ChessPieces"></td>
+          <td id="7f" class="ChessPieces"></td>
+          <td id="7g" class="ChessPieces"></td>
+          <td id="7h" class="ChessPieces"></td>
+          <td class="rightNumber">7</td>
+        </tr>
+        <tr id="row6">
+          <td class="leftNumber">6</td>
+          <td id="6a" class="ChessPieces"></td>
+          <td id="6b" class="ChessPieces"></td>
+          <td id="6c" class="ChessPieces"></td>
+          <td id="6d" class="ChessPieces"></td>
+          <td id="6e" class="ChessPieces"></td>
+          <td id="6f" class="ChessPieces"></td>
+          <td id="6g" class="ChessPieces"></td>
+          <td id="6h" class="ChessPieces"></td>
+          <td class="rightNumber">6</td>
+        </tr>
+        <tr id="row5">
+          <td class="leftNumber">5</td>
+          <td id="5a" class="ChessPieces"></td>
+          <td id="5b" class="ChessPieces"></td>
+          <td id="5c" class="ChessPieces"></td>
+          <td id="5d" class="ChessPieces"></td>
+          <td id="5e" class="ChessPieces"></td>
+          <td id="5f" class="ChessPieces"></td>
+          <td id="5g" class="ChessPieces"></td>
+          <td id="5h" class="ChessPieces"></td>
+          <td class="rightNumber">5</td>
+        </tr>
+        <tr id="row4">
+          <td class="leftNumber">4</td>
+          <td id="4a" class="ChessPieces"></td>
+          <td id="4b" class="ChessPieces"></td>
+          <td id="4c" class="ChessPieces"></td>
+          <td id="4d" class="ChessPieces"></td>
+          <td id="4e" class="ChessPieces"></td>
+          <td id="4f" class="ChessPieces"></td>
+          <td id="4g" class="ChessPieces"></td>
+          <td id="4h" class="ChessPieces"></td>
+          <td class="rightNumber">4</td>
+        </tr>
+        <tr id="row3">
+          <td class="leftNumber">3</td>
+          <td id="3a" class="ChessPieces"></td>
+          <td id="3b" class="ChessPieces"></td>
+          <td id="3c" class="ChessPieces"></td>
+          <td id="3d" class="ChessPieces"></td>
+          <td id="3e" class="ChessPieces"></td>
+          <td id="3f" class="ChessPieces"></td>
+          <td id="3g" class="ChessPieces"></td>
+          <td id="3h" class="ChessPieces"></td>
+          <td class="rightNumber">3</td>
+        </tr>
+        <tr id="row2">
+          <td class="leftNumber">2</td>
+          <td id="2a" class="ChessPieces"></td>
+          <td id="2b" class="ChessPieces"></td>
+          <td id="2c" class="ChessPieces"></td>
+          <td id="2d" class="ChessPieces"></td>
+          <td id="2e" class="ChessPieces"></td>
+          <td id="2f" class="ChessPieces"></td>
+          <td id="2g" class="ChessPieces"></td>
+          <td id="2h" class="ChessPieces"></td>
+          <td class="rightNumber">2</td>
+        </tr>
+        <tr id="row1">
+          <td class="leftNumber">1</td>
+          <td id="1a" class="ChessPieces"></td>
+          <td id="1b" class="ChessPieces"></td>
+          <td id="1c" class="ChessPieces"></td>
+          <td id="1d" class="ChessPieces"></td>
+          <td id="1e" class="ChessPieces"></td>
+          <td id="1f" class="ChessPieces"></td>
+          <td id="1g" class="ChessPieces"></td>
+          <td id="1h" class="ChessPieces"></td>
+          <td class="rightNumber">1</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th class="leftNumber"> </th>
+          <th>a</th>
+          <th>b</th>
+          <th>c</th>
+          <th>d</th>
+          <th>e</th>
+          <th>f</th>
+          <th>g</th>
+          <th>h</th>
+          <th class="rightNumber"> </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
   <br>
   <div class="controlPanel">
     <table class="controlPanelBody">
@@ -41,6 +167,10 @@
       </tbody>
     </table>
   </div>
+  <script type="text/javascript">
+    // createInitialChessBoard();
+    loadChessBoard();
+  </script>
 </body>
 
 </html>

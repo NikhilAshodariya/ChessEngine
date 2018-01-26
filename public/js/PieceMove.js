@@ -24,6 +24,7 @@ function pieceMove() {
         alert("move is not valid dude");
       }
       // loadStackArea(arr["stackData"]);
+      loadChessBoard();
     }
   };
   var from = $("#sourceRow").val() + $("#sourceColumn").val();

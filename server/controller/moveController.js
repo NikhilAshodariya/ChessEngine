@@ -10,7 +10,6 @@ var obj = function() {
 function movePiece(from, to) {
   // console.log("from = " + from);
   // console.log("to = " + to);
-  console.log("in move controller");
   var piece = ChessBoard.board[from].getPiece();
   if (piece == undefined || piece == null) {
     return "invalid";

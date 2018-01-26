@@ -10,6 +10,18 @@ class Piece {
     console.log("in Pieces Move");
   }
 
+  getSymbol(){
+    return this.symbol;
+  }
+
+  getName(){
+    return this.name;
+  }
+
+  getImage(){
+    return this.image;
+  }
+
 }
 
 module.exports = Piece;

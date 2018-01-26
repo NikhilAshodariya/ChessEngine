@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var moveController = require("./server/controller/moveController.js");
 var ChessBoard = require("./server/model/ChessBoard.js");
-// var createChessBoardController = require("./server/controller/ChessBoard.js");
+var sendChessBoard = require("./server/controller/sendChessBoard.js");
 
 var app = express();
 
@@ -22,9 +22,10 @@ chessBoardRouter.get("/", function(request, response) {
 });
 
 chessBoardRouter.get("/getChessBoard", function(request, response) {
+  var data = sendChessBoard.getChessPosition();
   response.setHeader("Content-Type", "application/JSON");
   response.send(JSON.stringify({
-    chessBoard: ChessBoard.board
+    chessBoard:data
   }));
 });
 
