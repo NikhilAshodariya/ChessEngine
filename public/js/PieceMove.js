@@ -25,6 +25,10 @@ function pieceMove() {
       }
       // loadStackArea(arr["stackData"]);
       loadChessBoard();
+      $("#sourceRow").val("");
+      $("#sourceColumn").val("");
+      $("#destinationRow").val("");
+      $("#destinationColumn").val("");
     }
   };
   var from = $("#sourceRow").val() + $("#sourceColumn").val();
