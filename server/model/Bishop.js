@@ -15,11 +15,6 @@ class Bishop extends Piece {
 
   move(from, to) {
     loadResources();
-    // here code for Bishop will be coded
-    // decrease number an increase alphabet
-    // decrease number an decrease alphabet
-    // increase number an increase alphabet
-    // increase number an decrease alphabet
     function changeChar(c, amountToChange) {
       return String.fromCharCode(c.charCodeAt(0) + amountToChange);
     }
