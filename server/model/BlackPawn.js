@@ -15,22 +15,89 @@ class BlackPawn extends Pawn {
   move(from, to) {
     // return "valid";
     loadResources();
+
+    var fromNumber = Number(from[0]);
+    var fromAlphabet = from[1];
+    var toNumber = Number(to[0]);
+    var toAlphabet = to[1];
+
+    if (((fromNumber - 2) == toNumber) && (fromAlphabet == toAlphabet)) {
+      if (this.isFirstMove == true) {
+        if (ChessBoard.getPiece((fromNumber - 1) + from[1]) == undefined) {
+          if (ChessBoard.getPiece(to) == undefined) {
+            ChessBoard.setPiece(to, ChessBoard.getPiece(from));
+            ChessBoard.setPiece(from, undefined);
+            console.log("Move successful");
+            this.isFirstMove = false;
+            return "valid";
+          } else {
+            console.log("invalid move since someone is present on location --> blackPawn ");
+            return "invalid";
+          }
+        } else {
+          console.log("invalid move since someone is in between --> blackPawn ");
+          return "invalid";
+        }
+      } else {
+        console.log("only two moves allowed for first move");
+        return "invalid";
+      }
+    } else if (((fromNumber - 1) == toNumber) && (fromAlphabet == toAlphabet)) {
+      if (ChessBoard.getPiece(to) == undefined) {
+        ChessBoard.setPiece(to, ChessBoard.getPiece(from));
+        ChessBoard.setPiece(from, undefined);
+        console.log("Move successful");
+        this.isFirstMove = false;
+        return "valid";
+      } else {
+        if (fromAlphabet == toAlphabet) {
+          console.log("someone present on location -> whitePawn");
+          return "invalid";
+        } else {
+          console.log("cross Move valid only for killing Pawns");
+          return "invalid";
+        }
+      }
+    } else if (((fromNumber - 1) == toNumber) && (Math.abs(fromAlphabet.charCodeAt(0) - toAlphabet.charCodeAt(0)) == 1)) {
+      if (ChessBoard.getPiece(to) != undefined) {
+        if (ChessBoard.getPiece(from).getType() == ChessBoard.getPiece(to).getType()) {
+          console.log("same party elements can't be killed in BlackPawn");
+          return "invalid";
+        } else {
+          var kp = ChessBoard.getPiece(to);
+          KilledPieces[to] = kp;
+          ChessBoard.setPiece(to, ChessBoard.getPiece(from));
+          ChessBoard.setPiece(from, undefined);
+          return "valid";
+        }
+      } else {
+        console.log("cross move alllowed only for Killing Pieces");
+        return "invalid";
+      }
+    } else {
+      console.log("invalid Black Pawn Move");
+      return "invalid";
+    }
+
+
+    /*
     if (((Number(from[0]) - 2) == to[0]) && (from[1] == to[1])) {
       if (this.isFirstMove == true) {
         if (ChessBoard.getPiece("" + (Number(from[0]) - 1) + from[1]) == undefined) {
           if (ChessBoard.getPiece(to) != undefined) {
-            if (ChessBoard.getPiece(from).getType() == ChessBoard.getPiece(to).getType()) {
-              console.log("same party elements can't be killed");
-              return "invalid";
-            }
-            console.log("enemy Killed");
-            console.log("Move successful");
-            this.isFirstMove = false;
-            var kp = ChessBoard.getPiece(to);
-            KilledPieces[to] = kp;
-            ChessBoard.setPiece(to, ChessBoard.getPiece(from));
-            ChessBoard.setPiece(from, undefined);
-            return "valid";
+            return "invalid";
+            // if (ChessBoard.getPiece(from).getType() == ChessBoard.getPiece(to).getType()) {
+            //   console.log("same party elements can't be killed");
+            //   return "invalid";
+            // }
+            // console.log("enemy Killed");
+            // console.log("Move successful");
+            // this.isFirstMove = false;
+            // var kp = ChessBoard.getPiece(to);
+            // KilledPieces[to] = kp;
+            // ChessBoard.setPiece(to, ChessBoard.getPiece(from));
+            // ChessBoard.setPiece(from, undefined);
+            // return "valid";
           } else {
             ChessBoard.setPiece(to, ChessBoard.getPiece(from));
             ChessBoard.setPiece(from, undefined);
@@ -48,6 +115,7 @@ class BlackPawn extends Pawn {
       }
     } else if (((Number(from[0]) - 1) == to[0]) && (from[1]) == to[1]) {
       if (ChessBoard.getPiece(to) != undefined) {
+        return "invalid";
         console.log("enemy Killed");
         console.log("Move successful");
         this.isFirstMove = false;
@@ -67,7 +135,7 @@ class BlackPawn extends Pawn {
       console.log("Move Unsuccessful learn pawn move direction");
       return "invalid";
     }
-
+    */
   }
 }
 
