@@ -1,5 +1,6 @@
-// var ChessBoard = require("../model/ChessBoard.js");
 var ChessBoard = require("../model/ChessBoard.js");
+
+var whichMovePiece = "white";
 
 var obj = function() {
   return {
@@ -8,15 +9,19 @@ var obj = function() {
 }
 
 function movePiece(from, to) {
-  // console.log("from = " + from);
-  // console.log("to = " + to);
   var piece = ChessBoard.board[from].getPiece();
   if (piece == undefined || piece == null) {
     return "invalid";
-  } else {
+  } else if (ChessBoard.getPiece(from).getType().toLowerCase() == whichMovePiece) {
+    if (whichMovePiece == "white") {
+      whichMovePiece = "black";
+    } else {
+      whichMovePiece = "white";
+    }
     return piece.move(from, to);
+  } else {
+    return "invalid";
   }
-  // var piece = ChessBoard.board[from].getPiece().move(from,to);
-
 }
+
 module.exports = obj();

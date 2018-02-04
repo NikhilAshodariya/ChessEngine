@@ -1,5 +1,8 @@
+var whichPlayerMove = "white";
+
 $(document).ready(function() {
   $("#pieceMoveSubmitButton").click(pieceMove);
+  $("#playerMoveStatus").html(whichPlayerMove+" Player Move")
 });
 
 function pieceMove() {
@@ -20,6 +23,13 @@ function pieceMove() {
         var data = `#${destinationRow.val()}${destinationColumn.val()}`;
         $(data).html(sourcePieceData);
         // alert("move is valid dude congo")
+        if (whichPlayerMove == "white") {
+          whichPlayerMove = "black";
+        } else {
+          whichPlayerMove = "white";
+        }
+        $("#playerMoveStatus").html(whichPlayerMove+" Player Move")
+
       } else {
         alert("move is not valid dude");
       }
@@ -29,6 +39,9 @@ function pieceMove() {
       $("#sourceColumn").val("");
       $("#destinationRow").val("");
       $("#destinationColumn").val("");
+
+
+
     }
   };
   var from = $("#sourceRow").val() + $("#sourceColumn").val();
