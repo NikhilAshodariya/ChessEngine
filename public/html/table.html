@@ -5,13 +5,28 @@
   <meta charset="utf-8">
   <title>Chess Board</title>
   <link rel="stylesheet" href="../css/tableDesign.css">
+
+  <!-- jQuery library -->
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <!-- jQuery library end -->
+
+
+  <!-- jQueryUi library -->
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <!-- jQueryUi library end -->
+
+
+
 </head>
 
 <body id="body">
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+  <!-- personal library -->
   <script type="text/javascript" src="../js/PieceMove.js"></script>
   <script type="text/javascript" src="../js/loadChessBoard.js"></script>
   <!-- <script type="text/javascript" src="controlPanel.js"></script> -->
+  <!-- personal library end -->
 
 
   <div class="chessBoard">
@@ -32,98 +47,98 @@
       <tbody>
         <tr id="row8">
           <td class="leftNumber">8</td>
-          <td id="8a" class="ChessPieces"></td>
-          <td id="8b" class="ChessPieces"></td>
-          <td id="8c" class="ChessPieces"></td>
-          <td id="8d" class="ChessPieces"></td>
-          <td id="8e" class="ChessPieces"></td>
-          <td id="8f" class="ChessPieces"></td>
-          <td id="8g" class="ChessPieces"></td>
-          <td id="8h" class="ChessPieces"></td>
+          <td class="ChessPieces"><span id="8a" /></td>
+          <td class="ChessPieces"><span id="8b" /></td>
+          <td class="ChessPieces"><span id="8c" /></td>
+          <td class="ChessPieces"><span id="8d" /></td>
+          <td class="ChessPieces"><span id="8e" /></td>
+          <td class="ChessPieces"><span id="8f" /></td>
+          <td class="ChessPieces"><span id="8g" /></td>
+          <td class="ChessPieces"><span id="8h" /></td>
           <td class="rightNumber">8</td>
         </tr>
         <tr id="row7">
           <td class="leftNumber">7</td>
-          <td id="7a" class="ChessPieces"></td>
-          <td id="7b" class="ChessPieces"></td>
-          <td id="7c" class="ChessPieces"></td>
-          <td id="7d" class="ChessPieces"></td>
-          <td id="7e" class="ChessPieces"></td>
-          <td id="7f" class="ChessPieces"></td>
-          <td id="7g" class="ChessPieces"></td>
-          <td id="7h" class="ChessPieces"></td>
+          <td class="ChessPieces"><span id="7a" /></td>
+          <td class="ChessPieces"><span id="7b" /></td>
+          <td class="ChessPieces"><span id="7c" /></td>
+          <td class="ChessPieces"><span id="7d" /></td>
+          <td class="ChessPieces"><span id="7e" /></td>
+          <td class="ChessPieces"><span id="7f" /></td>
+          <td class="ChessPieces"><span id="7g" /></td>
+          <td class="ChessPieces"><span id="7h" /></td>
           <td class="rightNumber">7</td>
         </tr>
         <tr id="row6">
           <td class="leftNumber">6</td>
-          <td id="6a" class="ChessPieces"></td>
-          <td id="6b" class="ChessPieces"></td>
-          <td id="6c" class="ChessPieces"></td>
-          <td id="6d" class="ChessPieces"></td>
-          <td id="6e" class="ChessPieces"></td>
-          <td id="6f" class="ChessPieces"></td>
-          <td id="6g" class="ChessPieces"></td>
-          <td id="6h" class="ChessPieces"></td>
+          <td class="ChessPieces"><span id="6a" /></td>
+          <td class="ChessPieces"><span id="6b" /></td>
+          <td class="ChessPieces"><span id="6c" /></td>
+          <td class="ChessPieces"><span id="6d" /></td>
+          <td class="ChessPieces"><span id="6e" /></td>
+          <td class="ChessPieces"><span id="6f" /></td>
+          <td class="ChessPieces"><span id="6g" /></td>
+          <td class="ChessPieces"><span id="6h" /></td>
           <td class="rightNumber">6</td>
         </tr>
         <tr id="row5">
           <td class="leftNumber">5</td>
-          <td id="5a" class="ChessPieces"></td>
-          <td id="5b" class="ChessPieces"></td>
-          <td id="5c" class="ChessPieces"></td>
-          <td id="5d" class="ChessPieces"></td>
-          <td id="5e" class="ChessPieces"></td>
-          <td id="5f" class="ChessPieces"></td>
-          <td id="5g" class="ChessPieces"></td>
-          <td id="5h" class="ChessPieces"></td>
+          <td class="ChessPieces"><span id="5a" /></td>
+          <td class="ChessPieces"><span id="5b" /></td>
+          <td class="ChessPieces"><span id="5c" /></td>
+          <td class="ChessPieces"><span id="5d" /></td>
+          <td class="ChessPieces"><span id="5e" /></td>
+          <td class="ChessPieces"><span id="5f" /></td>
+          <td class="ChessPieces"><span id="5g" /></td>
+          <td class="ChessPieces"><span id="5h" /></td>
           <td class="rightNumber">5</td>
         </tr>
         <tr id="row4">
           <td class="leftNumber">4</td>
-          <td id="4a" class="ChessPieces"></td>
-          <td id="4b" class="ChessPieces"></td>
-          <td id="4c" class="ChessPieces"></td>
-          <td id="4d" class="ChessPieces"></td>
-          <td id="4e" class="ChessPieces"></td>
-          <td id="4f" class="ChessPieces"></td>
-          <td id="4g" class="ChessPieces"></td>
-          <td id="4h" class="ChessPieces"></td>
+          <td class="ChessPieces"><span id="4a" /></td>
+          <td class="ChessPieces"><span id="4b" /></td>
+          <td class="ChessPieces"><span id="4c" /></td>
+          <td class="ChessPieces"><span id="4d" /></td>
+          <td class="ChessPieces"><span id="4e" /></td>
+          <td class="ChessPieces"><span id="4f" /></td>
+          <td class="ChessPieces"><span id="4g" /></td>
+          <td class="ChessPieces"><span id="4h" /></td>
           <td class="rightNumber">4</td>
         </tr>
         <tr id="row3">
           <td class="leftNumber">3</td>
-          <td id="3a" class="ChessPieces"></td>
-          <td id="3b" class="ChessPieces"></td>
-          <td id="3c" class="ChessPieces"></td>
-          <td id="3d" class="ChessPieces"></td>
-          <td id="3e" class="ChessPieces"></td>
-          <td id="3f" class="ChessPieces"></td>
-          <td id="3g" class="ChessPieces"></td>
-          <td id="3h" class="ChessPieces"></td>
+          <td class="ChessPieces"><span id="3a" /></td>
+          <td class="ChessPieces"><span id="3b" /></td>
+          <td class="ChessPieces"><span id="3c" /></td>
+          <td class="ChessPieces"><span id="3d" /></td>
+          <td class="ChessPieces"><span id="3e" /></td>
+          <td class="ChessPieces"><span id="3f" /></td>
+          <td class="ChessPieces"><span id="3g" /></td>
+          <td class="ChessPieces"><span id="3h" /></td>
           <td class="rightNumber">3</td>
         </tr>
         <tr id="row2">
           <td class="leftNumber">2</td>
-          <td id="2a" class="ChessPieces"></td>
-          <td id="2b" class="ChessPieces"></td>
-          <td id="2c" class="ChessPieces"></td>
-          <td id="2d" class="ChessPieces"></td>
-          <td id="2e" class="ChessPieces"></td>
-          <td id="2f" class="ChessPieces"></td>
-          <td id="2g" class="ChessPieces"></td>
-          <td id="2h" class="ChessPieces"></td>
+          <td class="ChessPieces"><span id="2a" /></td>
+          <td class="ChessPieces"><span id="2b" /></td>
+          <td class="ChessPieces"><span id="2c" /></td>
+          <td class="ChessPieces"><span id="2d" /></td>
+          <td class="ChessPieces"><span id="2e" /></td>
+          <td class="ChessPieces"><span id="2f" /></td>
+          <td class="ChessPieces"><span id="2g" /></td>
+          <td class="ChessPieces"><span id="2h" /></td>
           <td class="rightNumber">2</td>
         </tr>
         <tr id="row1">
           <td class="leftNumber">1</td>
-          <td id="1a" class="ChessPieces"></td>
-          <td id="1b" class="ChessPieces"></td>
-          <td id="1c" class="ChessPieces"></td>
-          <td id="1d" class="ChessPieces"></td>
-          <td id="1e" class="ChessPieces"></td>
-          <td id="1f" class="ChessPieces"></td>
-          <td id="1g" class="ChessPieces"></td>
-          <td id="1h" class="ChessPieces"></td>
+          <td class="ChessPieces"><span id="1a" /></td>
+          <td class="ChessPieces"><span id="1b" /></td>
+          <td class="ChessPieces"><span id="1c" /></td>
+          <td class="ChessPieces"><span id="1d" /></td>
+          <td class="ChessPieces"><span id="1e" /></td>
+          <td class="ChessPieces"><span id="1f" /></td>
+          <td class="ChessPieces"><span id="1g" /></td>
+          <td class="ChessPieces"><span id="1h" /></td>
           <td class="rightNumber">1</td>
         </tr>
       </tbody>
@@ -175,8 +190,27 @@
   </div>
 
   <script type="text/javascript">
-    // createInitialChessBoard();
     loadChessBoard();
+    setWhichPlayerMove();
+    $("#chessTable > tbody td > span").draggable({
+      containment: $("#chessTable"),
+      opacity: 0.6,
+      helper: 'clone',
+      cursor: 'pointer',
+      stop: function() {
+        console.log("dragging stopped");
+      }
+    });
+
+    $("#chessTable > tbody td").droppable({
+      revert:"invalid",
+      drop: function(event, ui) {
+        // ui.draggable
+        var to = $(event.target).children().attr("id");
+        var from = $(ui.draggable).attr("id");
+        pieceMove(from,to);
+      },
+    });
   </script>
 </body>
 

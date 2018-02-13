@@ -25,8 +25,16 @@ chessBoardRouter.get("/getChessBoard", function(request, response) {
   var data = sendChessBoard.getChessPosition();
   response.setHeader("Content-Type", "application/JSON");
   response.send(JSON.stringify({
-    chessBoard:data
+    chessBoard: data
   }));
+});
+
+chessBoardRouter.get("/getWhichPlayerMove", function(request, response) {
+  var data = moveController.getWhichMovePiece();
+  response.setHeader("Content-Type", "application/JSON");
+  response.send(JSON.stringify({
+    whichPlayerMove: data
+  }))
 });
 
 chessBoardRouter.get("/move/:from/:to", function(request, response) {

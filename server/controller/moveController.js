@@ -4,8 +4,13 @@ var whichMovePiece = "white";
 
 var obj = function() {
   return {
-    movePiece: movePiece
+    movePiece: movePiece,
+    getWhichMovePiece: getWhichMovePiece
   }
+}
+
+function getWhichMovePiece(){
+  return whichMovePiece;
 }
 
 function movePiece(from, to) {
@@ -13,12 +18,15 @@ function movePiece(from, to) {
   if (piece == undefined || piece == null) {
     return "invalid";
   } else if (ChessBoard.getPiece(from).getType().toLowerCase() == whichMovePiece) {
-    if (whichMovePiece == "white") {
-      whichMovePiece = "black";
-    } else {
-      whichMovePiece = "white";
+    var output = piece.move(from, to);
+    if (output == "valid") {
+      if (whichMovePiece == "white") {
+        whichMovePiece = "black";
+      } else {
+        whichMovePiece = "white";
+      }
     }
-    return piece.move(from, to);
+    return output;
   } else {
     return "invalid";
   }
