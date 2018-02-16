@@ -45,8 +45,14 @@ chessBoardRouter.get("/move/:from/:to", function(request, response) {
   }));
 });
 
+Login = express.Router();
+Login.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/html/Login.html");
+});
+
 app.use(express.static("public"));
 app.use("/chessBoard", chessBoardRouter);
+app.use("/Login",Login);
 app.listen(8081, function() {
   console.log("Chess Server listening to 8081");
 });
