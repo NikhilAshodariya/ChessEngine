@@ -1,4 +1,4 @@
-var ChessBoard = require("../model/ChessBoard.js");
+var ChessBoard = require("../model/chess/ChessBoard.js");
 
 var whichMovePiece = "white";
 

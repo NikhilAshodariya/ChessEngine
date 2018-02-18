@@ -1,7 +1,7 @@
 var ChessBoard;
 
 function loadResource() {
-  ChessBoard = require("../model/ChessBoard.js")
+  ChessBoard = require("../model/chess/ChessBoard.js")
 }
 
 function nextHeader(c) {

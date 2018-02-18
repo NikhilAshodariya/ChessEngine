@@ -46,7 +46,7 @@
 
             <div class="row" id="loginTab">
               <div class="col s12">
-                <form action="chessBoard">
+                <form action="/Login/signIn" method="post">
                   <div class="input-field center-align">
                     <input type="text" id="email" class="validate">
                     <label for="email" class="active">Email</label>
@@ -76,25 +76,25 @@
 
             <div class="row" id="signUpTab">
               <div class="col s12">
-                <form>
+                <form action = "/Login/signUp" method="post">
                   <div class="input-field center-align">
-                    <input type="text" id="userName" class="required">
+                    <input type="text" id="userName" name="userName" class="required">
                     <label for="userName" class="active">User Name*</label>
                   </div>
 
                   <div class="input-field center-align">
-                    <input type="email" id="email" class="validate required">
+                    <input type="email" id="email" name="email" class="validate required">
                     <label for="email" class="active">Email*</label>
                   </div>
 
                   <div class="input-field center-align">
-                    <input type="password" id="password" class="required">
+                    <input type="password" id="password" name="password" class="required">
                     <label for="password" class="active">Password*</label>
                   </div>
 
                   <div class="input-field center-align">
                     <!-- <input type="date" id="dob" class="datepicker required"> -->
-                    <input type="text" id="dob" class="datepicker required">
+                    <input type="text" id="dob" name="dob" class="datepicker required">
                     <label for="dob" class="active">Date of Birth*</label>
                     <script type="text/javascript">
                       $('.datepicker').pickadate({

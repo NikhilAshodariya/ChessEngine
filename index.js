@@ -1,8 +1,18 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+
 var moveController = require("./server/controller/moveController.js");
-var ChessBoard = require("./server/model/ChessBoard.js");
+var ChessBoard = require("./server/model/chess/ChessBoard.js");
 var sendChessBoard = require("./server/controller/sendChessBoard.js");
+var userLoginController = require("./server/controller/LoginController.js");
+
+
+var PORT = 8081;
+var URL = `mongodb://127.0.0.1:27017/Chess`;
+
+// Connecting to DataBase
+mongoose.connect(URL);
 
 var app = express();
 
@@ -50,9 +60,18 @@ Login.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/html/Login.html");
 });
 
+Login.post("/signUp", (req, res) => {
+  userLoginController.signUp(req, res);
+  res.redirect("/Login");
+});
+
+Login.post("/signIn", (req, res) => {
+  userLoginController.signIn(req,res);
+});
+
 app.use(express.static("public"));
 app.use("/chessBoard", chessBoardRouter);
-app.use("/Login",Login);
+app.use("/Login", Login);
 app.listen(8081, function() {
   console.log("Chess Server listening to 8081");
 });
