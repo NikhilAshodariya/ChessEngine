@@ -1,15 +1,17 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var session = require("express-session");
+var fs = require('fs');
 
 var moveController = require("./server/controller/moveController.js");
-var ChessBoard = require("./server/model/chess/ChessBoard.js");
+// var ChessBoard = require("./server/model/chess/Board.js");
 var sendChessBoard = require("./server/controller/sendChessBoard.js");
 var userLoginController = require("./server/controller/LoginController.js");
 
-
 var PORT = 8081;
 var URL = `mongodb://127.0.0.1:27017/Chess`;
+var sessionSecretFilePath = "./server/passwords/SessionSecret.json";
 
 // Connecting to DataBase
 mongoose.connect(URL);
@@ -21,18 +23,20 @@ var logger = function(request, response, next) {
   next();
 }
 
-app.use(logger);
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 
 chessBoardRouter = express.Router();
 chessBoardRouter.get("/", function(request, response) {
-  response.sendFile(__dirname + "/public/html/table.html");
+  if (request.session.email == "" ||
+    request.session.email == undefined ||
+    request.session.email == null) {
+    response.redirect("/Login");
+  } else {
+    response.sendFile(__dirname + "/public/html/table.html");
+  }
 });
 
 chessBoardRouter.get("/getChessBoard", function(request, response) {
-  var data = sendChessBoard.getChessPosition();
+  var data = sendChessBoard.getChessPosition(request,response);
   response.setHeader("Content-Type", "application/JSON");
   response.send(JSON.stringify({
     chessBoard: data
@@ -40,7 +44,7 @@ chessBoardRouter.get("/getChessBoard", function(request, response) {
 });
 
 chessBoardRouter.get("/getWhichPlayerMove", function(request, response) {
-  var data = moveController.getWhichMovePiece();
+  var data = moveController.getWhichMovePiece(request, response);
   response.setHeader("Content-Type", "application/JSON");
   response.send(JSON.stringify({
     whichPlayerMove: data
@@ -48,7 +52,8 @@ chessBoardRouter.get("/getWhichPlayerMove", function(request, response) {
 });
 
 chessBoardRouter.get("/move/:from/:to", function(request, response) {
-  result = moveController.movePiece(request.params.from, request.params.to);
+  result = moveController.movePiece(request, response);
+  // result = moveController.movePiece(request.params.from, request.params.to);
   response.setHeader("Content-Type", "application/JSON");
   response.send(JSON.stringify({
     moveStatus: result
@@ -57,7 +62,14 @@ chessBoardRouter.get("/move/:from/:to", function(request, response) {
 
 Login = express.Router();
 Login.get("/", function(req, res) {
-  res.sendFile(__dirname + "/public/html/Login.html");
+  if (req.session.email == "" ||
+    req.session.email == undefined ||
+    req.session.email == null) {
+    res.sendFile(__dirname + "/public/html/Login.html");
+  } else {
+    // userLoginController.signIn(req, res);
+    res.redirect("/chessBoard");
+  }
 });
 
 Login.post("/signUp", (req, res) => {
@@ -66,10 +78,28 @@ Login.post("/signUp", (req, res) => {
 });
 
 Login.post("/signIn", (req, res) => {
-  userLoginController.signIn(req,res);
+  if (req.session.email == "" ||
+    req.session.email == undefined ||
+    req.session.email == null) {
+    userLoginController.signIn(req, res);
+  } else {
+
+    response.redirect("/chessBoard");
+  }
 });
 
+// Reading SessionSecret
+var obj = JSON.parse(fs.readFileSync(sessionSecretFilePath, 'utf8'));
+
+app.use(logger);
 app.use(express.static("public"));
+app.use(session({
+  secret: obj["SessionSecret"]
+}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 app.use("/chessBoard", chessBoardRouter);
 app.use("/Login", Login);
 app.listen(8081, function() {

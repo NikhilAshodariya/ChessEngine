@@ -1,9 +1,9 @@
 var Piece = require("./Piece.js");
-var ChessBoard;
+// var ChessBoard;
 var KilledPieces;
 
 function loadResources() {
-  ChessBoard = require("./ChessBoard.js");
+  // ChessBoard = require("./ChessBoard.js");
   KilledPieces = require("./KilledPieces.js");
 }
 
@@ -14,7 +14,7 @@ class King extends Piece {
     // this.name = name;
   }
 
-  move(from, to) {
+  move(ChessBoard, from, to) {
     // here code of the King move will be coded\
     loadResources();
 

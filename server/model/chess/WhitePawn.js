@@ -1,11 +1,11 @@
 var Pawn = require("./Pawn.js");
-var Board;
-var ChessBoard;
+// var Board;
+// var ChessBoard;
 var KilledPieces;
 
 function loadResources() {
-  Board = require("./Board.js");
-  ChessBoard = require("./ChessBoard.js");
+  // Board = require("./Board.js");
+  // ChessBoard = require("./ChessBoard.js");
   KilledPieces = require("./KilledPieces.js");
 }
 
@@ -15,7 +15,7 @@ class WhitePawn extends Pawn {
     super("WhitePawn", "&#9817;", image);
   }
 
-  move(from, to) {
+  move(ChessBoard,from, to) {
     // return "valid";
     loadResources();
 

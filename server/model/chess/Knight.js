@@ -1,9 +1,9 @@
 var Piece = require("./Piece.js");
-var ChessBoard;
+// var ChessBoard;
 var KilledPieces;
 
 function loadResources() {
-  ChessBoard = require("./ChessBoard.js");
+  // ChessBoard = require("./ChessBoard.js");
   KilledPieces = require("./KilledPieces.js");
 }
 
@@ -12,7 +12,7 @@ class Knight extends Piece {
     super(name, symbol, image);
   }
 
-  move(from, to) {
+  move(ChessBoard, from, to) {
     // Knight move code
     loadResources();
 

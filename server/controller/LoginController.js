@@ -1,4 +1,6 @@
 var User = require("../model/user/userModel.model.js");
+var Board = require("../model/chess/Board.js")
+var SELFGLOBALS = require("../Globals/global.js");
 
 var obj = {};
 
@@ -17,15 +19,24 @@ function signUp(req, res) {
 
 function login(req, res) {
   User.findOne({
-    "email": req.body.email
+    email: req.body.email,
+    password: req.body.password
   }).then((data) => {
-    console.log(`User Login Successful ${data}`);
-    res.redirect("/chessBoard")
-    return true;
-  }, (data) => {
-    console.log(`User Login Unsuccessful ${data}`);
-    res.redirect("/Login");
-    return false;
+    if (data == null) {
+      console.log(`User Login Unsuccessful ${data}`);
+      res.redirect("/Login");
+    } else {
+      req.session.email = req.body.email;
+      req.session.userId = SELFGLOBALS.incrementUserCount();
+      SELFGLOBALS.addChessBoard(new Board());
+      // console.log("------------------");
+      // console.log(req.session.chessBoard.board[intermediateData] instanceof Tile);
+      // console.log(getMethods(ChessBoard));
+      // console.log("------------------");
+      req.session.whichPlayerMove = "white";
+      console.log(`User Login Successful ${data}`);
+      res.redirect("/chessBoard")
+    }
   });
 }
 

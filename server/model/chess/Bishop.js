@@ -1,10 +1,10 @@
 var Piece = require("./Piece.js");
-var ChessBoard;
-var KilledPieces;
+// var ChessBoard;
+// var KilledPieces;
 
 function loadResources() {
-  ChessBoard = require("./ChessBoard.js");
-  KilledPieces = require("./KilledPieces.js");
+  // ChessBoard = require("./ChessBoard.js");
+  // KilledPieces = require("./KilledPieces.js");
 }
 
 class Bishop extends Piece {
@@ -13,8 +13,9 @@ class Bishop extends Piece {
     super(name, symbol, image);
   }
 
-  move(from, to) {
+  move(ChessBoard, from, to) {
     loadResources();
+
     function changeChar(c, amountToChange) {
       return String.fromCharCode(c.charCodeAt(0) + amountToChange);
     }
@@ -83,13 +84,4 @@ class Bishop extends Piece {
     // }
   }
 }
-
-
-
-
-
-
-
-
-
 module.exports = Bishop;

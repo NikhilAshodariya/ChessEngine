@@ -1,6 +1,6 @@
-var ChessBoard = require("../model/chess/ChessBoard.js");
-
-var whichMovePiece = "white";
+// var ChessBoard = require("../model/chess/ChessBoard.js");
+// var SELFGLOBALS ;
+var whichMovePiece;
 
 var obj = function() {
   return {
@@ -9,21 +9,29 @@ var obj = function() {
   }
 }
 
-function getWhichMovePiece(){
-  return whichMovePiece;
+function getWhichMovePiece(req, res) {
+  return req.session.whichPlayerMove;
 }
 
-function movePiece(from, to) {
-  var piece = ChessBoard.board[from].getPiece();
+function movePiece(request, response) {
+  // var Board = require("../model/chess/Board.js");
+  var SELFGLOBALS = require("../Globals/global.js");
+
+  var from = request.params.from;
+  var to = request.params.to;
+
+  // var piece = new Board(request.session.chessBoard).getPiece(from);
+  var chessBoard = SELFGLOBALS.getChessBoard(request.session.userId);
+  var piece = SELFGLOBALS.getChessBoard(request.session.userId).getPiece(from);
   if (piece == undefined || piece == null) {
     return "invalid";
-  } else if (ChessBoard.getPiece(from).getType().toLowerCase() == whichMovePiece) {
-    var output = piece.move(from, to);
+  } else if (chessBoard.getPiece(from).getType().toLowerCase() == request.session.whichPlayerMove) {
+    var output = piece.move(chessBoard,from, to);
     if (output == "valid") {
-      if (whichMovePiece == "white") {
-        whichMovePiece = "black";
+      if (request.session.whichPlayerMove == "white") {
+        request.session.whichPlayerMove = "black";
       } else {
-        whichMovePiece = "white";
+        request.session.whichPlayerMove = "white";
       }
     }
     return output;
