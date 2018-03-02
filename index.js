@@ -5,13 +5,13 @@ var session = require("express-session");
 var fs = require('fs');
 
 var moveController = require("./server/controller/moveController.js");
-// var ChessBoard = require("./server/model/chess/Board.js");
+var chessOperationController = require("./server/controller/chessOperation.js");
 var sendChessBoard = require("./server/controller/sendChessBoard.js");
 var userLoginController = require("./server/controller/LoginController.js");
+var sessionSecretFilePath = "./server/passwords/SessionSecret.json";
 
 var PORT = 8081;
 var URL = `mongodb://127.0.0.1:27017/Chess`;
-var sessionSecretFilePath = "./server/passwords/SessionSecret.json";
 
 // Connecting to DataBase
 mongoose.connect(URL);
@@ -36,7 +36,7 @@ chessBoardRouter.get("/", function(request, response) {
 });
 
 chessBoardRouter.get("/getChessBoard", function(request, response) {
-  var data = sendChessBoard.getChessPosition(request,response);
+  var data = sendChessBoard.getChessPosition(request, response);
   response.setHeader("Content-Type", "application/JSON");
   response.send(JSON.stringify({
     chessBoard: data
@@ -49,6 +49,16 @@ chessBoardRouter.get("/getWhichPlayerMove", function(request, response) {
   response.send(JSON.stringify({
     whichPlayerMove: data
   }))
+});
+
+chessBoardRouter.get("/reset", function(request, response) {
+  var result = chessOperationController.resetChessBoard(request, response);
+  if (result == true) {
+    response.redirect("/chessBoard");
+  } else {
+    console.log("Chess Board Cannot be reset");
+    response.redirect("/chessBoard");
+  }
 });
 
 chessBoardRouter.get("/move/:from/:to", function(request, response) {
@@ -83,9 +93,12 @@ Login.post("/signIn", (req, res) => {
     req.session.email == null) {
     userLoginController.signIn(req, res);
   } else {
-
     response.redirect("/chessBoard");
   }
+});
+
+Login.get("/signOut", (req, res) => {
+  userLoginController.signOut(req, res);
 });
 
 // Reading SessionSecret
