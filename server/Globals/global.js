@@ -5,6 +5,10 @@ function addChessBoard(chessBoard) {
   allUserChessBoard[totalUserSignedIn] = chessBoard;
 }
 
+function addChessBoardAtIndex(index, chessBoard) {
+  allUserChessBoard[index] = chessBoard;
+}
+
 function getChessBoard(userId) {
   if ((userId == undefined) || (typeof(userId) != "number")) {
     throw new Error("userId is = " + userId);
@@ -24,6 +28,7 @@ function incrementUserCount() {
 
 var obj = {
   addChessBoard: addChessBoard,
+  addChessBoardAtIndex: addChessBoardAtIndex,
   deleteChessBoard: deleteChessBoard,
   incrementUserCount: incrementUserCount,
   getChessBoard: getChessBoard

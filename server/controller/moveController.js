@@ -1,5 +1,3 @@
-// var ChessBoard = require("../model/chess/ChessBoard.js");
-// var SELFGLOBALS ;
 var whichMovePiece;
 
 var obj = function() {
@@ -14,13 +12,11 @@ function getWhichMovePiece(req, res) {
 }
 
 function movePiece(request, response) {
-  // var Board = require("../model/chess/Board.js");
   var SELFGLOBALS = require("../Globals/global.js");
 
   var from = request.params.from;
   var to = request.params.to;
 
-  // var piece = new Board(request.session.chessBoard).getPiece(from);
   var chessBoard = SELFGLOBALS.getChessBoard(request.session.userId);
   var piece = SELFGLOBALS.getChessBoard(request.session.userId).getPiece(from);
   if (piece == undefined || piece == null) {
